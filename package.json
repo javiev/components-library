@@ -1,5 +1,8 @@
 {
   "name": "@javiev/components-library",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/javiev"
+  },
   "version": "0.0.1",
   "description": "",
   "type": "module",
@@ -13,14 +16,17 @@
     "@rollup/plugin-commonjs": "^25.0.4",
     "@rollup/plugin-node-resolve": "^15.2.1",
     "@rollup/plugin-typescript": "^11.1.4",
+    "@rollup/plugin-image": "^3.0.2",
+    "@rollup/plugin-terser": "^0.4.1",
+    "@rollup/plugin-url": "^8.0.1",
     "@types/react": "^18.2.23",
     "react": "^18.2.0",
     "rollup": "^3.29.4",
     "rollup-plugin-dts": "^6.0.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "styled-components": "^6.0.8",
     "typescript": "^5.2.2"
-  },
-  "dependencies": {
-    "styled-components": "^6.0.8"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -28,7 +34,12 @@
     "dist"
   ],
   "types": "dist/index.d.ts",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/javiev"
+  "peerDependencies": {
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.11",
+    "@types/styled-components": "^5.1.28",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.0.8"
   }
 }
