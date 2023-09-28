@@ -26,13 +26,13 @@ export default [
             },
         ],
         plugins: [
-            peerDepsExternal(),
-            resolve(),
             commonjs(),
-            url(),
-            postcss(),
-            terser(),
             image(),
+            peerDepsExternal(),
+            postcss(),
+            resolve(),
+            terser(),
+            url(),
             typescript({
                 tsconfig: "./tsconfig.json",
                 esModuleInterop: true,
