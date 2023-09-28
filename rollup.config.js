@@ -29,6 +29,10 @@ export default [
             peerDepsExternal(),
             resolve(),
             commonjs(),
+            url(),
+            postcss(),
+            terser(),
+            image(),
             typescript({
                 tsconfig: "./tsconfig.json",
                 esModuleInterop: true,
@@ -41,11 +45,7 @@ export default [
                     "**/*.stories.ts",
                     "**/*.stories.tsx",
                 ],
-            }),
-            url(),
-            postcss(),
-            terser(),
-            image()
+            })
         ],
     },
     {
