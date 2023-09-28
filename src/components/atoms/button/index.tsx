@@ -39,7 +39,7 @@ export interface ButtonLabelProps extends ButtonProps {
  *   }}
  * />
  */
-export default function Button({
+export function Button({
                            color = 'success',
                            size = 'medium',
                            label = 'button',
