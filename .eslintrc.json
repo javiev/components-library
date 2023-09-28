@@ -37,7 +37,7 @@
                 "indentStyle": "space",
                 "useTabs": true,
                 "trailingComma": "es5",
-                "importOrder": ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],
+                "importOrder": ["^[./]"],
                 "importOrderSeparation": true,
                 "importOrderSortSpecifiers": true
             }
