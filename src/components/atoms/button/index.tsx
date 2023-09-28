@@ -1,18 +1,18 @@
-import StyledButton from "./index.style";
-import { ButtonProps } from "./index.types";
+import StyledButton from './index.style';
+import { ButtonProps } from './index.types';
 
 /**
  * Extended props for the Button component with label and optional click handler.
  */
 export interface ButtonLabelProps extends ButtonProps {
-  /**
-   * The text displayed inside the button.
-   */
-  label: string;
-  /**
-   * Optional click event handler for the button.
-   */
-  onClick?: () => void;
+	/**
+	 * The text displayed inside the button.
+	 */
+	label: string;
+	/**
+	 * Optional click event handler for the button.
+	 */
+	onClick?: () => void;
 }
 
 /**
@@ -40,14 +40,14 @@ export interface ButtonLabelProps extends ButtonProps {
  * />
  */
 export function Button({
-  color = "success",
-  size = "medium",
-  label = "button",
-  onClick,
+	color = 'success',
+	size = 'medium',
+	label = 'button',
+	onClick,
 }: ButtonLabelProps) {
-  return (
-    <StyledButton size={size} color={color} onClick={onClick}>
-      {label}
-    </StyledButton>
-  );
+	return (
+		<StyledButton size={size} color={color} onClick={onClick}>
+			{label}
+		</StyledButton>
+	);
 }

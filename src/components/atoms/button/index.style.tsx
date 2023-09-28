@@ -2,35 +2,35 @@ import styled from 'styled-components';
 import { Size, Color, ButtonProps } from './index.types';
 
 const sizeMap: Record<Size, { fontSize: string; padding: string }> = {
-    small: {
-        fontSize: '12px',
-        padding: '4px 8px',
-    },
-    medium: {
-        fontSize: '16px',
-        padding: '8px 16px',
-    },
-    large: {
-        fontSize: '20px',
-        padding: '12px 24px',
-    },
+	small: {
+		fontSize: '12px',
+		padding: '4px 8px',
+	},
+	medium: {
+		fontSize: '16px',
+		padding: '8px 16px',
+	},
+	large: {
+		fontSize: '20px',
+		padding: '12px 24px',
+	},
 };
 
 const colorMap: Record<Color, { backgroundColor: string; textColor: string }> =
-    {
-        success: {
-            backgroundColor: '#00C851',
-            textColor: 'white',
-        },
-        info: {
-            backgroundColor: '#33b5e5',
-            textColor: 'white',
-        },
-        error: {
-            backgroundColor: '#ff4444',
-            textColor: 'white',
-        },
-    };
+	{
+		success: {
+			backgroundColor: '#00C851',
+			textColor: 'white',
+		},
+		info: {
+			backgroundColor: '#33b5e5',
+			textColor: 'white',
+		},
+		error: {
+			backgroundColor: '#ff4444',
+			textColor: 'white',
+		},
+	};
 
 const StyledButton = styled.button<ButtonProps>`
 	border: none;
