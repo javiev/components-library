@@ -1,17 +1,10 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import { Button, ButtonLabelProps  } from './index';
+import { render } from '@testing-library/react';
 
-describe('Button component', () => {
-	const props: ButtonLabelProps = {
-		label: 'Click me!',
-		color: 'success',
-		size: 'medium',
-		onClick: jest.fn(),
-	};
-});
+import { Button } from '.';
 
-test('render a button', () => {
-	expect(true).toBe(true);
+describe('Button', () => {
+	test('renders the Button component', () => {
+		render(<Button label="button" color="success" size="medium" />);
+	});
 });
