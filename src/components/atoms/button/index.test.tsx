@@ -1,10 +1,22 @@
-import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
+import { Button, ButtonLabelProps } from '.';
 
-import { Button } from '.';
+describe('Button component', () => {
+	const props: ButtonLabelProps = {
+		label: 'Click me!',
+		color: 'success',
+		size: 'medium',
+		onClick: jest.fn(),
+	};
 
-describe('Button', () => {
-	test('renders the Button component', () => {
-		render(<Button label="button" color="success" size="medium" />);
+	test('renders with provided label', () => {
+		const { getByText } = render(<Button {...props} />);
+		expect(getByText('Click me!')).toBeInTheDocument();
+	});
+
+	test('triggers onClick handler when clicked', () => {
+		const { getByText } = render(<Button {...props} />);
+		fireEvent.click(getByText('Click me!'));
+		expect(props.onClick).toHaveBeenCalledTimes(1);
 	});
 });
