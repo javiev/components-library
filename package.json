@@ -5,6 +5,8 @@
   },
   "version": "0.0.1",
   "description": "",
+  "author": "Javier GC",
+  "license": "ISC",
   "scripts": {
     "rollup": "rollup -c",
     "test": "jest",
@@ -13,8 +15,6 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "author": "Javier GC",
-  "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.23.0",
     "@babel/preset-env": "^7.22.20",
