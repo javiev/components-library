@@ -3,7 +3,7 @@
 	"moduleNameMapper": {
 		"\\.(css|less|scss|sass)$": "identity-obj-proxy"
 	},
-	"setupFilesAfterEnv": ["<rootDir>/setupTest.ts"],
+	"setupFilesAfterEnv": ["<rootDir>/setupTests.ts"],
 	"coverageThreshold": {
 		"global": {
 			"branches": 80,
