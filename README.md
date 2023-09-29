@@ -3,7 +3,7 @@
 ![version](https://img.shields.io/badge/version-0.0.1-brightgreen)
 ![license](https://img.shields.io/badge/license-ISC-blue)
 
-A small design system library based on React, TypeScript, Styled-components, and Storybook.
+A small design system library engineered with React, TypeScript, Styled-components, Jest, and Storybook, conceived as a personal project for my portfolio. This project is currently a Work in Progress (WIP).
 
 ## 🚀 Installation
 
