@@ -39,12 +39,7 @@ export interface ButtonLabelProps extends ButtonProps {
  *   }}
  * />
  */
-export function Button({
-	color = 'success',
-	size = 'medium',
-	label = 'button',
-	onClick,
-}: ButtonLabelProps) {
+export function Button({ color, size, label, onClick }: ButtonLabelProps) {
 	return (
 		<StyledButton size={size} color={color} onClick={onClick}>
 			{label}
