@@ -1,4 +1,6 @@
+import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { Button, ButtonLabelProps } from '.';
 
 describe('Button component', () => {
@@ -9,14 +11,17 @@ describe('Button component', () => {
 		onClick: jest.fn(),
 	};
 
-	test('renders with provided label', () => {
+	test('Renders the button with the correct label', () => {
 		const { getByText } = render(<Button {...props} />);
-		expect(getByText('Click me!')).toBeInTheDocument();
+		const button = getByText('Click me!');
+		expect(button).toBeInTheDocument();
 	});
 
-	test('triggers onClick handler when clicked', () => {
-		const { getByText } = render(<Button {...props} />);
-		fireEvent.click(getByText('Click me!'));
-		expect(props.onClick).toHaveBeenCalledTimes(1);
+	test('Calls the onClick function when the button is clicked', () => {
+		const onClickMock = jest.fn();
+		const { getByText } = render(<Button {...props} onClick={onClickMock} />);
+		const button = getByText('Click me!');
+		fireEvent.click(button);
+		expect(onClickMock).toHaveBeenCalled();
 	});
 });
