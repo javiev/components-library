@@ -12,7 +12,7 @@ Before installing this library, you need to configure npm to access the GitHub P
 ```plaintext
 registry=https://registry.npmjs.org/
 @javiev:registry=https://npm.pkg.github.com/
-//npm.pkg.github.com/:_authToken=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
+//npm.pkg.github.com/:_authToken=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
 ```
 
 **Note:** The provided token allows anyone to install and use the library until 20/09/2024.
