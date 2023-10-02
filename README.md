@@ -7,15 +7,23 @@ A small design system library engineered with React, TypeScript, Styled-componen
 
 ## 🚀 Installation
 
-Before installing this library, you need to configure npm to access the GitHub Packages registry. To do this, create a `.npmrc` file in the root of your project with the following content:
+Before installing this library, you need to configure npm to access the GitHub Packages registry.
+
+### Token Creation
+1. Go to your GitHub settings.
+2. Navigate to `Developer settings` -> `Personal access tokens`.
+3. Click `Generate new token`.
+4. Select the `read:packages` scope.
+5. Click `Generate token`.
+6. Copy the generated token.
+
+Now, create a `.npmrc` file in the root of your project with the following content:
 
 ```plaintext
 registry=https://registry.npmjs.org/
 @javiev:registry=https://npm.pkg.github.com/
-//npm.pkg.github.com/:_authToken=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
+//npm.pkg.github.com/:_authToken=YOUR_GENERATED_TOKEN
 ```
-
-**Note:** The provided token allows anyone to install and use the library until 02/10/2024.
 
 Now you can install the library by running the following command:
 
