@@ -15,7 +15,7 @@ registry=https://registry.npmjs.org/
 //npm.pkg.github.com/:_authToken=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
 ```
 
-**Note:** The provided token allows anyone to install and use the library until 20/09/2024.
+**Note:** The provided token allows anyone to install and use the library until 02/10/2024.
 
 Now you can install the library by running the following command:
 
