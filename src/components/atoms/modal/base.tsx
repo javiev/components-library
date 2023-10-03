@@ -1,4 +1,5 @@
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
+import { ModalProps } from './base.types';
 
 import {
 	ModalBackdrop,
@@ -7,18 +8,6 @@ import {
 	ModalHeader,
 	ModalWrapper,
 } from './index.style';
-
-export interface ModalComposition {
-	Header?: React.FC<{ title: string }>;
-	Body?: React.FC<PropsWithChildren<object>>;
-	Footer?: React.FC<PropsWithChildren<object>>;
-}
-
-interface ModalProps {
-	isOpen: boolean;
-	onClose: () => void;
-	children: React.ReactNode;
-}
 
 function Modal({
 	children,
@@ -40,14 +29,23 @@ function Modal({
 	);
 }
 
+/**
+ * The Header sub-component of the Modal.
+ */
 function Header({ title }: { title: string }) {
 	return <ModalHeader>{title}</ModalHeader>;
 }
 
+/**
+ * The Body sub-component of the Modal.
+ */
 function Body({ children }: PropsWithChildren<object>) {
 	return <ModalBody>{children}</ModalBody>;
 }
 
+/**
+ * The Footer sub-component of the Modal.
+ */
 function Footer({ children }: PropsWithChildren<object>) {
 	return <div>{children}</div>;
 }
