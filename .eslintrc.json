@@ -1,15 +1,19 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es6": true
     },
     "extends": [
-        "airbnb",
-        "airbnb-typescript",
         "eslint:recommended",
+        "airbnb/hooks",
+        "airbnb-typescript",
         "plugin:react/recommended",
+        "plugin:react/jsx-runtime",
         "plugin:@typescript-eslint/recommended",
-        "plugin:prettier/recommended"
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:prettier/recommended",
+        "plugin:import/recommended"
+
     ],
     "overrides": [
     ],
@@ -22,13 +26,19 @@
     "plugins": [
         "react",
         "@typescript-eslint",
-        "import"  // Asegúrate de agregar el plugin import aquí
+        "import"
     ],
     "rules": {
+        "no-console": "warn",
+        "linebreak-style": "off",
+        "react/prop-types": "off",
+        "object-shorthand": "error",
         "react/react-in-jsx-scope": "off",
         "react/require-default-props": "off",
+        "react-hooks/exhaustive-deps": "off",
         "import/prefer-default-export": "off",
         "react/jsx-props-no-spreading": "off",
+        "@typescript-eslint/no-explicit-any": "warn",
         "prettier/prettier": [
             "error",
             {
