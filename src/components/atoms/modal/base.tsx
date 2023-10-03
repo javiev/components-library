@@ -9,9 +9,9 @@ import {
 } from './index.style';
 
 export interface ModalComposition {
-	Header?: React.FC<{ title: string }>;
-	Body?: React.FC<PropsWithChildren<object>>;
-	Footer?: React.FC<PropsWithChildren<object>>;
+	Header: React.FC<{ title: string }>;
+	Body: React.FC<PropsWithChildren<object>>;
+	Footer: React.FC<PropsWithChildren<object>>;
 }
 
 interface ModalProps {

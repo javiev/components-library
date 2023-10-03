@@ -1,8 +1,8 @@
 import React from 'react';
 
-import ModalBase, { ModalComposition } from '../base';
+import ModalBase from '../base';
 
-export interface ModalProps extends ModalComposition {
+export interface ModalProps {
 	title: string;
 	body: React.ReactNode;
 	footer: React.ReactNode;
@@ -10,13 +10,7 @@ export interface ModalProps extends ModalComposition {
 	onClose: () => void;
 }
 
-export default function Modal({
-	title,
-	body,
-	footer,
-	isOpen,
-	onClose,
-}: ModalProps) {
+function Modal({ title, body, footer, isOpen, onClose }: ModalProps) {
 	return (
 		<ModalBase isOpen={isOpen} onClose={onClose}>
 			<ModalBase.Header title={title} />
@@ -25,3 +19,5 @@ export default function Modal({
 		</ModalBase>
 	);
 }
+
+export default Modal;
