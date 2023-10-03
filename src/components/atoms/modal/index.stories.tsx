@@ -5,10 +5,6 @@ import { ModalComponent } from './index';
 const meta = {
 	title: 'Design System/Atoms/Modal',
 	component: ModalComponent,
-
-	parameters: {
-		layout: 'centered',
-	},
 	tags: ['autodocs'],
 } satisfies Meta<typeof ModalComponent>;
 

@@ -1,14 +1,5 @@
-import React from 'react';
-
 import ModalBase from '../base';
-
-export interface ModalProps {
-	title: string;
-	body: React.ReactNode;
-	footer: React.ReactNode;
-	isOpen: boolean;
-	onClose: () => void;
-}
+import { ModalProps } from './index.types';
 
 function Modal({ title, body, footer, isOpen, onClose }: ModalProps) {
 	return (
