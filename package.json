@@ -5,7 +5,7 @@
   },
   "version": "0.0.2",
   "description": "",
-  "author": "Javier GC",
+  "author": "Javier Gómez",
   "license": "ISC",
   "scripts": {
     "rollup": "rollup -c",
