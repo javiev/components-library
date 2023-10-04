@@ -6,22 +6,13 @@ on:
       - main
 
 jobs:
-  run_if_label_matches:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: 🛠️ Checkout code
         uses: actions/checkout@v3
 
-      - name: 🏷️ Get Labels
-        id: labels
-        run: |
-          LABELS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/labels \
-            | jq -r '.[].name')
-          echo "::set-output name=labels::$LABELS"
-
       - name: 📦 Setup Node.js
-        if: contains(steps.labels.outputs.labels, 'new-package-version')
         uses: actions/setup-node@v3
         with:
           node-version: '16.x'
@@ -29,15 +20,29 @@ jobs:
           scope: 'javiev'
 
       - name: 🧪 Install dependencies
-        if: contains(steps.labels.outputs.labels, 'new-package-version')
         run: npm ci
 
+      - name: 📂 Get list of changed files
+        id: files
+        uses: jitterbit/get-changed-files@v1
+        with:
+          format: 'json'
+
+      - name: 🔄 Check if release version changed
+        id: check_version
+        run: |
+          if echo '${{ steps.files.outputs.all }}' | grep -q "package.json"; then
+            echo "::set-output name=version_changed::true"
+          else
+            echo "::set-output name=version_changed::false"
+          fi
+
       - name: 🌀 Run Rollup
-        if: contains(steps.labels.outputs.labels, 'new-package-version')
         run: npm run rollup
+        if: steps.check_version.outputs.version_changed == 'true'
 
       - name: 🚀 Publish
-        if: contains(steps.labels.outputs.labels, 'new-package-version')
         run: npm publish --access public
+        if: steps.check_version.outputs.version_changed == 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
