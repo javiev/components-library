@@ -1,6 +1,7 @@
 # @javiev/components-library
 
 ![version](https://img.shields.io/badge/version-0.0.1-brightgreen)
+[![stability-wip](https://img.shields.io/badge/stability-wip-lightgrey.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#work-in-progress)
 ![license](https://img.shields.io/badge/license-ISC-blue)
 
 A small design system library engineered with React, TypeScript, Styled-components, Jest, and Storybook, conceived as a personal project for my portfolio. This project is currently a Work in Progress (WIP).
