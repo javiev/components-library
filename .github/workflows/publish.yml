@@ -1,7 +1,8 @@
-name: 🎨 Publish @javiev/components-library to GitHub Packages
+name: 🎨 publish @javiev/components-library to GitHub Packages
 
 on:
-  push:
+  pull_request:
+    types: [synchronize, opened, reopened]
     branches:
       - main
 
@@ -13,10 +14,10 @@ jobs:
       packages: write
 
     steps:
-      - name: 🛠️ Checkout main branch
+      - name: 🛠️ Checkout repository
         uses: actions/checkout@v3
         with:
-          ref: main
+          fetch-depth: 0
 
       - name: 🔄 Cache dependencies
         uses: actions/cache@v3
@@ -39,20 +40,25 @@ jobs:
       - name: 💾 Save Main Version
         id: save_main_version
         run: |
+          git checkout main
           MAIN_VERSION=$(jq -r .version package.json)
           echo "Main Version: $MAIN_VERSION"
           echo "MAIN_VERSION=$MAIN_VERSION" >> $GITHUB_ENV
 
-      - name: 🔄 Checkout current branch
-        uses: actions/checkout@v3
+      - name: 💾 Save PR Version
+        id: save_pr_version
+        run: |
+          git checkout ${{ github.head_ref }}
+          PR_VERSION=$(jq -r .version package.json)
+          echo "PR Version: $PR_VERSION"
+          echo "PR_VERSION=$PR_VERSION" >> $GITHUB_ENV
 
       - name: 🔄 Compare Versions
         id: compare_versions
         run: |
-          PR_VERSION=$(jq -r .version package.json)
-          echo "PR Version: $PR_VERSION"
           echo "Main Version: ${{ env.MAIN_VERSION }}"
-          if [[ "$PR_VERSION" != "${{ env.MAIN_VERSION }}" ]]; then
+          echo "PR Version: ${{ env.PR_VERSION }}"
+          if [[ "${{ env.PR_VERSION }}" != "${{ env.MAIN_VERSION }}" ]]; then
             echo "VERSION_CHANGED=true" >> $GITHUB_ENV
           else
             echo "VERSION_CHANGED=false" >> $GITHUB_ENV
