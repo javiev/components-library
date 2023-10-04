@@ -1,7 +1,7 @@
 name: 🎨 publish @javiev/components-library to GitHub Packages
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
@@ -13,7 +13,19 @@ jobs:
       packages: write
 
     steps:
-      - name: 🛠️ Checkout code
+      - name: 🛠️ Checkout main branch
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: 🔄 Check if release version changed
+        id: check_version
+        run: |
+          MAIN_VERSION=$(jq -r .version package.json)
+          echo "Main Version: $MAIN_VERSION"
+          echo "MAIN_VERSION=$MAIN_VERSION" >> $GITHUB_ENV
+
+      - name: 🔄 Checkout current branch
         uses: actions/checkout@v3
 
       - name: 📦 Setup Node.js
@@ -26,25 +38,23 @@ jobs:
       - name: 🧪 Install dependencies
         run: npm ci
 
-      - name: 🔄 Check if release version changed
-        id: check_version
+      - name: 🔄 Compare Versions
+        id: compare_versions
         run: |
-          BASE_VERSION=$(git show origin/main~1:package.json | jq -r .version)
           HEAD_VERSION=$(jq -r .version package.json)
-          echo "Base Version: $BASE_VERSION"
           echo "Head Version: $HEAD_VERSION"
-          if [[ "$BASE_VERSION" != "$HEAD_VERSION" ]]; then
-            echo "::set-output name=version_changed::true"
+          if [[ "$HEAD_VERSION" != "${{ env.MAIN_VERSION }}" ]]; then
+            echo "VERSION_CHANGED=true" >> $GITHUB_ENV
           else
-            echo "::set-output name=version_changed::false"
+            echo "VERSION_CHANGED=false" >> $GITHUB_ENV
           fi
 
       - name: 🌀 Run Rollup
-        run: npm run rollup
         if: ${{ env.VERSION_CHANGED == 'true' }}
+        run: npm run rollup
 
       - name: 🚀 Publish
-        run: npm publish --access public
         if: ${{ env.VERSION_CHANGED == 'true' }}
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
