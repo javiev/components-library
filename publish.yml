@@ -1,0 +1,32 @@
+name: 🎨 publish @javiev/components-library to GitHub Packages
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run_if_label_matches:
+    if: ${{ github.event.label.name == 'new-package-version' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛠️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16.x'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: 'javiev'
+
+      - name: 🧪 Install dependencies
+        run: npm ci
+
+      - name: 🌀 Run Rollup
+        run: npm run rollup
+
+      - name: 🚀 Publish
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
